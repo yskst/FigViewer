@@ -1,6 +1,5 @@
 package figView;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -36,8 +35,8 @@ public class figurePanel extends JPanel {
 
 	protected void paintComponent(Graphics g){
 		if(img != null){
-			Dimension d = getSize();
-			g.drawImage(img, 0, 0, d.width, d.height, null);
+			System.err.println(img.getWidth() + " " + img.getHeight());
+			g.drawImage(img, 0, 0, getSize().width, getSize().height, this);
 		}
 	}
 }
