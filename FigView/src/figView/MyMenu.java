@@ -10,8 +10,10 @@ import javax.swing.JMenuItem;
 public class MyMenu extends JMenuBar {
 	MyMenu(ActionListener al){
 		super();
-		FileMenu filemenu = new FileMenu(al);
-		add(filemenu);
+		FileMenu fm = new FileMenu(al);
+		EditMenu em = new EditMenu(al);
+		add(fm);
+		add(em);
 		setVisible(true);
 	}
 }
@@ -27,6 +29,18 @@ class FileMenu extends JMenu{
 		
 		item_open.addActionListener(al);
 		item_exit.addActionListener(al);
+		setVisible(true);
+	}
+}
+
+
+class EditMenu extends JMenu{
+	EditMenu(ActionListener al){
+		super("Edit");
+		JMenuItem item_reverse = new JMenuItem("reverse");
+		add(item_reverse);
+		
+		item_reverse.addActionListener(al);
 		setVisible(true);
 	}
 }
