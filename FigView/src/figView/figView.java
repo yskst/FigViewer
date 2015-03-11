@@ -2,11 +2,14 @@ package figView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
+
+import figView.lib.figUtil;
 
 
 public class figView extends JFrame implements ActionListener{
@@ -48,9 +51,15 @@ public class figView extends JFrame implements ActionListener{
 			if(r == JFileChooser.APPROVE_OPTION){
 				File f = fileChooser.getSelectedFile();
 				fp.loadFile(f);
+				fp.repaint();
 			}
 		}else if(cmd.equals("Exit")){
 			System.exit(0);
+		}else if(cmd.equals("reverse") && fp != null){
+			BufferedImage bi = fp.getImg();
+			bi = figUtil.reverse(bi);
+			fp.setImg(bi);
+			fp.repaint();
 		}
 	}
 }

@@ -31,11 +31,13 @@ public class figurePanel extends JPanel {
 
 
 	// Getter
-	public BufferedImage GetImg(){ return img; }
+	public BufferedImage getImg(){ return img; }
+
+	// Setter
+	public void setImg(BufferedImage b){ img = b; }
 
 	protected void paintComponent(Graphics g){
 		if(img != null){
-			System.err.println(img.getWidth() + " " + img.getHeight());
 			g.drawImage(img, 0, 0, getSize().width, getSize().height, this);
 		}
 	}
