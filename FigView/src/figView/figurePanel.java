@@ -29,7 +29,10 @@ public class figurePanel extends JPanel {
 		img = figIO.ReadFile(f);
 	}
 
-
+	public void saveFile(File f){
+		figIO.SaveFile(f, img);
+	}
+	
 	// Getter
 	public BufferedImage getImg(){ return img; }
 

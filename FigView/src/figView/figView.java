@@ -13,6 +13,7 @@ import figView.lib.figUtil;
 
 
 public class figView extends JFrame implements ActionListener{
+	private File f = null;
 	private figurePanel fp = null;
 	private JFileChooser fileChooser = null;
 
@@ -49,10 +50,13 @@ public class figView extends JFrame implements ActionListener{
 		if(cmd.equals("Open")){
 			int  r = fileChooser.showOpenDialog(this);
 			if(r == JFileChooser.APPROVE_OPTION){
-				File f = fileChooser.getSelectedFile();
+				f = fileChooser.getSelectedFile();
+				System.err.println(f.getName() + " opened.");
 				fp.loadFile(f);
 				fp.repaint();
 			}
+		}else if(cmd.equals("Save")){
+			fp.saveFile(f);
 		}else if(cmd.equals("Exit")){
 			System.exit(0);
 		}else if(cmd.equals("reverse") && fp != null){

@@ -23,11 +23,14 @@ class FileMenu extends JMenu{
 		super("File");
 
 		JMenuItem item_open = new JMenuItem("Open");
+		JMenuItem item_save = new JMenuItem("Save");
 		JMenuItem item_exit = new JMenuItem("Exit");
 		add(item_open);
+		add(item_save);
 		add(item_exit);
 		
 		item_open.addActionListener(al);
+		item_save.addActionListener(al);
 		item_exit.addActionListener(al);
 		setVisible(true);
 	}
