@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 import figView.lib.figUtil;
+import figView.lib.filter;
 
 
 public class figView extends JFrame implements ActionListener{
@@ -57,13 +58,34 @@ public class figView extends JFrame implements ActionListener{
 			}
 		}else if(cmd.equals("Save")){
 			fp.saveFile(f);
-		}else if(cmd.equals("Exit")){
-			System.exit(0);
+		}else if(cmd.equals("Save to Another File")){
+			int r = fileChooser.showSaveDialog(this);
+			if(r == JFileChooser.APPROVE_OPTION){
+				f = fileChooser.getSelectedFile();
+				System.err.println("Save to " + f.getName());
+				fp.saveFile(f);
+			}
 		}else if(cmd.equals("reverse") && fp != null){
 			BufferedImage bi = fp.getImg();
 			bi = figUtil.reverse(bi);
 			fp.setImg(bi);
 			fp.repaint();
+
+		} else if (cmd.equals("smooth")) {
+			filter f = filter.getFilter("smooth");
+			BufferedImage bi = fp.getImg();
+			bi = f.filtering(bi);
+			fp.setImg(bi);
+			fp.repaint();
+
+		} else if(cmd.equals("gaussian")){
+			filter f = filter.getFilter("gaussian");
+			BufferedImage bi = fp.getImg();
+			bi = f.filtering(bi);
+			fp.setImg(bi);
+			fp.repaint();
+		} else if (cmd.equals("Exit")) {
+			System.exit(0);
 		}
 	}
 }

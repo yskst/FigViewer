@@ -5,11 +5,12 @@ import java.awt.image.BufferedImage;
 public class figUtil {
 
 	// parse color into RGB value.
-	private static int getR(int color){ return color & 0xff; }
-	private static int getG(int color){ return (color >> 8) & 0xff; }
-	private static int getB(int color){ return (color >> 16) & 0xff; }
+	public static int getR(int color){ return color & 0xff; }
+	public static int getG(int color){ return (color >> 8) & 0xff; }
+	public static int getB(int color){ return (color >> 16) & 0xff; }
 
-	private static int synthesizeColor(int r, int g, int b){ return r | (g << 8) | (b << 16); }
+	// The each pixel value must be under 255.
+	public static int synthesizeColor(int r, int g, int b){ return r | (g << 8) | (b << 16); }
 
 	private static int reversePixel(int color){
 		int r = 255 - getR(color);
@@ -27,7 +28,6 @@ public class figUtil {
 		int h = f.getHeight();
 		int t = f.getType();
 		BufferedImage bi = new BufferedImage(w, h, t);
-		
 
 		int c;
 		for(int i = 0; i < w; i++){
@@ -37,7 +37,9 @@ public class figUtil {
 				bi.setRGB(i, j, c);
 			}
 		}
-
 		return bi;
 	}
 }
+
+
+
